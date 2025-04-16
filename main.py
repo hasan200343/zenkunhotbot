@@ -22,7 +22,13 @@ hug_gifs = [
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDFteWt6NmMza3BoYmlrcTdnanp5bWMwZ205ODFxdGN0NW1nb3A5biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/GMFUrC8E8aWoo/giphy.gif",
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDFteWt6NmMza3BoYmlrcTdnanp5bWMwZ205ODFxdGN0NW1nb3A5biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/sUIZWMnfd4Mb6/giphy.gif",
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDFteWt6NmMza3BoYmlrcTdnanp5bWMwZ205ODFxdGN0NW1nb3A5biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qTeLrzpDZBY2c/giphy.gif",
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDFteWt6NmMza3BoYmlrcTdnanp5bWMwZ205ODFxdGN0NW1nb3A5biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L5f4Z5JoOKARG/giphy.gif"
+    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDFteWt6NmMza3BoYmlrcTdnanp5bWMwZ205ODFxdGN0NW1nb3A5biZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L5f4Z5JoOKARG/giphy.gif",
+    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDFsY3Q2eGdpbTM5ejIydm9hd2N2OHZicWc0Yzg2MmVpZTE2cGxyNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ZQN9jsRWp1M76/giphy.gif",
+    "https://media.giphy.com/media/C4gbG94zAjyYE/giphy.gif?cid=ecf05e47ndnalkg2pzph7y15lydo52e1aed9lwrz2rdc3rbv&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDFsY3Q2eGdpbTM5ejIydm9hd2N2OHZicWc0Yzg2MmVpZTE2cGxyNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/LIqFOpO9Qh0uA/giphy.gif",
+    "https://media.giphy.com/media/3o6ZsTopjMRVkJXAWI/giphy.gif?cid=ecf05e474m1rl4gkc0bf8mdjxk2q2l7j3a3nvakholetqwug&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDBrazhuamlxeDR3bmRmODJkOHA2eHJ5MG9zNGNvam9oaDd3bWw5diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ttThLoTVJb1EQ/giphy.gif"
+
 ]
 
 lovehug_gifs = [
