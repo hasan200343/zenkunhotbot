@@ -86,7 +86,7 @@ bonk_descriptions = [
 # ----------------------
 @bot.command()
 async def hug(ctx, member: discord.Member):
-    gif_url = random.choice(hug_gifs)
+    gif_url = random.shuffle(hug_gifs)
     title = random.choice(hug_titles)
     description = random.choice(hug_descriptions).format(
         sender=ctx.author.mention, receiver=member.mention)
