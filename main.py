@@ -7,6 +7,7 @@ import os
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="!", intents=intents)
+last_hug_gif = None
 
 
 @bot.event
@@ -84,9 +85,32 @@ bonk_descriptions = [
 # ----------------------
 # 🧸 Hug Command
 # ----------------------
+# @bot.command()
+# async def hug(ctx, member: discord.Member):
+#     gif_url = random.shuffle(hug_gifs)
+#     title = random.choice(hug_titles)
+#     description = random.choice(hug_descriptions).format(
+#         sender=ctx.author.mention, receiver=member.mention)
+
+#     embed = discord.Embed(title=title,
+#                           description=description,
+#                           color=discord.Color.blue())
+#     embed.set_image(url=gif_url)
+#     await ctx.send(embed=embed)
+
 @bot.command()
 async def hug(ctx, member: discord.Member):
-    gif_url = random.shuffle(hug_gifs)
+    global last_hug_gif
+
+    # Ensure we don’t repeat the last GIF
+    if len(hug_gifs) == 1:
+        gif_url = hug_gifs[0]
+    else:
+        gif_url = random.choice(hug_gifs)
+        while gif_url == last_hug_gif:
+            gif_url = random.choice(hug_gifs)
+    last_hug_gif = gif_url
+
     title = random.choice(hug_titles)
     description = random.choice(hug_descriptions).format(
         sender=ctx.author.mention, receiver=member.mention)
@@ -96,7 +120,6 @@ async def hug(ctx, member: discord.Member):
                           color=discord.Color.blue())
     embed.set_image(url=gif_url)
     await ctx.send(embed=embed)
-
 
 # ----------------------
 # 💕 Love Hug Command
