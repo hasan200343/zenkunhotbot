@@ -35,7 +35,8 @@ hug_gifs = [
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczJiNHUwaXltM3c5bW9vaHY5eHdxd2hkczk5MHh5dm03c25pZzc3ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/COGHvkvkhNSqk/giphy.gif",
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczJiNHUwaXltM3c5bW9vaHY5eHdxd2hkczk5MHh5dm03c25pZzc3ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/isT304mEdP1y8/giphy.gif",
     "https://c.tenor.com/bZzrhkxcs6cAAAAC/tenor.gif",
-    "https://c.tenor.com/G_IvONY8EFgAAAAd/tenor.gif"
+    "https://c.tenor.com/G_IvONY8EFgAAAAd/tenor.gif",
+    ""
 
 ]
 
@@ -64,6 +65,7 @@ hug_descriptions = [
     "{sender} gives a warm hug to {receiver}! 🥰",
     "{sender} wraps {receiver} in a comforting hug. 💫",
     "Hug alert! {sender} really cares about {receiver} 💗"
+    "A GOOD HUGGIE COMING IN FROM {sender} TO {receiver}"
 ]
 
 lovehug_titles = [
@@ -139,6 +141,13 @@ async def lovehug(ctx, member: discord.Member):
     embed.set_image(url=gif_url)
     await ctx.send(embed=embed)
 
+
+@commands.has_permissions(administrator=True)
+async def nuke(ctx):
+    channel = ctx.channel
+    new_channel = await channel.clone(reason="Channel nuked!")
+    await channel.delete()
+    await new_channel.send(f"💥 Boom! {ctx.author.mention} just nuked the channel!")
 
 # ----------------------
 # 🔨 Bonk Command
