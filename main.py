@@ -95,11 +95,13 @@ homiehug_titles = [
 
 homiehug_descriptions = [
     "{sender} sends {receiver} hug respectively **NO HOMO** 💪",
-    "{sender} melts into {receiver}'s arms with love. ❤️",
-    "Cuteness overload! {sender} hugs {receiver} with all their heart 💑"
+    "{sender} gives {receiver} a good cheeky hug 🫂",
+    "A good manly hug has been bestowed upon {receiver} by {sender} ✊",
+    "{sender} has crushed {receiver} ribs while giving a BIG AAH HUG!! ☠️"
 ]
 
 bonk_titles = ["BONK! 🔨", "Justice has been served 🪓", "Get rekt! 💥"]
+
 bonk_descriptions = [
     "{sender} bonks {receiver}! To horny jail you go! 🚓",
     "That’s enough outta you, {receiver}! BONK! 🔨 – from {sender}",
