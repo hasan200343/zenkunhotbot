@@ -145,11 +145,15 @@ async def lovehug(ctx, member: discord.Member):
 # ----------------------
 @bot.command()
 @commands.has_permissions(administrator=True)
+@commands.cooldown(1, 120, commands.BucketType.channel) # 2 minutes cooldown
 async def nuke(ctx):
-    channel = ctx.channel
-    new_channel = await channel.clone(reason="Channel nuked!")
-    await channel.delete()
-    await new_channel.send(f"💥 Boom! {ctx.author.mention} just nuked the channel!")
+    embed = discord.Embed(
+        title="💣 Channel Nuked!",
+        description=f"{ctx.author.mention} just nuked this channel... kind of 😏",
+        color=discord.Color.red()
+    )
+    embed.set_image(url="https://media.giphy.com/media/oe33xf3B50fsc/giphy.gif")  # Optional nuke GIF
+    await ctx.send(embed=embed)
 
 # ----------------------
 # 🔨 Bonk Command
