@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 import random
 import os
+import asyncio
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -143,17 +144,33 @@ async def lovehug(ctx, member: discord.Member):
 # ----------------------
 # 💣 Nuke Command
 # ----------------------
+import asyncio
+
 @bot.command()
 @commands.has_permissions(administrator=True)
-@commands.cooldown(1, 120, commands.BucketType.channel) # 2 minutes cooldown
+@commands.cooldown(1, 120, commands.BucketType.channel)  # 2-minute cooldown
 async def nuke(ctx):
+    countdown_msg = await ctx.send("☢️ Initiating nuke sequence...")
+
+    for i in range(5, 0, -1):
+        await asyncio.sleep(1)
+        await countdown_msg.edit(content=f"💣 Nuke in {i}...")
+    
+    await asyncio.sleep(1)
+    await countdown_msg.edit(content="🔥 Detonating...")
+
+    # Purge messages (excluding the last one or two to avoid deleting the countdown)
+    await ctx.channel.purge(limit=100)
+
+    # Nuke effect embed
     embed = discord.Embed(
         title="💣 Channel Nuked!",
         description=f"{ctx.author.mention} just nuked this channel... kind of 😏",
         color=discord.Color.red()
     )
-    embed.set_image(url="https://media.giphy.com/media/oe33xf3B50fsc/giphy.gif")  # Optional nuke GIF
+    embed.set_image(url="https://media.giphy.com/media/oe33xf3B50fsc/giphy.gif")  # Optional explosion GIF
     await ctx.send(embed=embed)
+
 
 # ----------------------
 # 🔨 Bonk Command
