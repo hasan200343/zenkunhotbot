@@ -35,8 +35,7 @@ hug_gifs = [
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczJiNHUwaXltM3c5bW9vaHY5eHdxd2hkczk5MHh5dm03c25pZzc3ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/COGHvkvkhNSqk/giphy.gif",
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczJiNHUwaXltM3c5bW9vaHY5eHdxd2hkczk5MHh5dm03c25pZzc3ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/isT304mEdP1y8/giphy.gif",
     "https://c.tenor.com/bZzrhkxcs6cAAAAC/tenor.gif",
-    "https://c.tenor.com/G_IvONY8EFgAAAAd/tenor.gif",
-    ""
+    "https://c.tenor.com/G_IvONY8EFgAAAAd/tenor.gif"
 
 ]
 
@@ -60,9 +59,16 @@ homiehug_gifs = [
 ]
 
 bonk_gifs = [
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODgwZGlhZ2hxd3F2cnhnemlvajVtdzBmcWxpM2NnNmltaWhjc3poZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/FDq2YMke0IhObhgoQx/giphy.gif",
-    "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3E1NHg3dmpkNzg2MHAxN3B5N3NsMncyb2xxOTFyMXEzeXc1a2V1YyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/HmgnQQjEMbMz0oLpqn/giphy.gif",
-    "https://media.giphy.com/media/4ibREl3R15F6AAPqKY/giphy.gif?cid=ecf05e47soeokc18potsul9b7dmeuwkj5b59n5c3j6c8m3jn&ep=v1_gifs_search&rid=giphy.gif&ct=g",
+    "https://c.tenor.com/bkXZ1GhsTTsAAAAC/tenor.gif",
+    "https://c.tenor.com/D6Ln3UPAdKcAAAAd/tenor.gif",
+    "https://c.tenor.com/mXwNLMSQRN8AAAAC/tenor.gif",
+    "https://c.tenor.com/BgSitYC0vboAAAAC/tenor.gif",
+    # "https://c.tenor.com/1Kwjdke1U0UAAAAd/tenor.gif", (THIS IS FOR KILL COMMAND)
+    "https://c.tenor.com/qeazzHmCPrYAAAAC/tenor.gif",
+    "https://media.tenor.com/ddw1dL-KF8UAAAAi/newspaper-anime.gif",
+    "https://c.tenor.com/FJsjk_9b_XgAAAAC/tenor.gif",
+    "https://c.tenor.com/Gg4wSkuH6b4AAAAC/tenor.gif",
+    "https://c.tenor.com/VHGbBswo_rQAAAAC/tenor.gif"
 ]
 
 # ----------------------
@@ -108,6 +114,17 @@ bonk_descriptions = [
     "{sender} shows no mercy. BONK time for {receiver} 😈"
 ]
 
+kill_titles = [
+    "GWEHEH SHINDAGO !! 😵",
+    "Time to dig a grave 🪦",
+    "Oh no we got one less homo sapiens from us.....🫂"
+]
+
+kill_description = [
+    "{sender} wanna dice {receiver} into the abyss, LET EM BE BURRIED ☠️",
+    "{sender} just deleted {receiver} from the existence. 💢",
+    "{sender} did it extra brutal now MUWAHAHAHAAHAHA ! ! !"
+]
 
 # ----------------------
 # 🧸 Hug Command
