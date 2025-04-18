@@ -216,12 +216,12 @@ async def bonk(ctx, member: discord.Member):
 async def homiehug(ctx, member: discord.Member):
     gif_url = random.choice(homiehug_gifs)
     title = random.choice(homiehug_titles)
-    description = random.choice(homiehug.discriptions).format(
+    description = random.choice(homiehug.descriptions).format(
         sender=ctx.author.mention, receiver=member.mention)
 
     embed = discord.Embed(title=title,
                           description=description,
-                          color=discord.Color.magenta())
+                          color=discord.Color.dark_grey())
     embed.set_image(url=gif_url)
     await ctx.send(embed=embed)
 
