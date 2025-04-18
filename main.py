@@ -152,7 +152,7 @@ import asyncio
 async def nuke(ctx):
     countdown_msg = await ctx.send("☢️ Initiating nuke sequence...")
 
-    for i in range(5, 0, -1):
+    for i in range(4, 0, -1):
         await asyncio.sleep(1)
         await countdown_msg.edit(content=f"💣 Nuke in {i}...")
     
@@ -160,7 +160,7 @@ async def nuke(ctx):
     await countdown_msg.edit(content="🔥 Detonating...")
 
     # Purge messages (excluding the last one or two to avoid deleting the countdown)
-    await ctx.channel.purge(limit=100)
+    await ctx.channel.purge(limit=None)
 
     # Nuke effect embed
     embed = discord.Embed(
