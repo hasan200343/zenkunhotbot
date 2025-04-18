@@ -48,6 +48,17 @@ lovehug_gifs = [
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHpvbG1tb2M5cXo0eG1nMWo2ZjJrOGhpbTVkZ2l2bmMzb3pqNnhvNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/IRUb7GTCaPU8E/giphy.gif"
 ]
 
+homiehug_gifs = [
+    "https://c.tenor.com/DDp3OiYHJxEAAAAC/tenor.gif",
+    "https://c.tenor.com/WpbZhwwj6zAAAAAC/tenor.gif",
+    "https://c.tenor.com/gtbvMmW3pYsAAAAC/tenor.gif",
+    "https://c.tenor.com/2c7DJsPqwk8AAAAd/tenor.gif",
+    "https://c.tenor.com/UBq2T-exSbkAAAAC/tenor.gif",
+    "https://c.tenor.com/g4ZmqWSZqSIAAAAC/tenor.gif",
+    "https://c.tenor.com/OaQvZ5AIPGUAAAAd/tenor.gif"
+
+]
+
 bonk_gifs = [
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODgwZGlhZ2hxd3F2cnhnemlvajVtdzBmcWxpM2NnNmltaWhjc3poZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/FDq2YMke0IhObhgoQx/giphy.gif",
     "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3E1NHg3dmpkNzg2MHAxN3B5N3NsMncyb2xxOTFyMXEzeXc1a2V1YyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/HmgnQQjEMbMz0oLpqn/giphy.gif",
@@ -74,6 +85,16 @@ lovehug_titles = [
 ]
 lovehug_descriptions = [
     "{sender} sends {receiver} the most loving hug ever! 💓",
+    "{sender} melts into {receiver}'s arms with love. ❤️",
+    "Cuteness overload! {sender} hugs {receiver} with all their heart 💑"
+]
+homiehug_titles = [
+    "Two brothers having a nice homie time 🤝",
+    "ZA BESTOO FURENZO!! ✊"
+]
+
+homiehug_descriptions = [
+    "{sender} sends {receiver} hug respectively **NO HOMO** 💪",
     "{sender} melts into {receiver}'s arms with love. ❤️",
     "Cuteness overload! {sender} hugs {receiver} with all their heart 💑"
 ]
@@ -188,7 +209,25 @@ async def bonk(ctx, member: discord.Member):
     embed.set_image(url=gif_url)
     await ctx.send(embed=embed)
 
+# ----------------------
+# 🤝 Homie Hug Command
+# ----------------------
+@bot.command()
+async def homiehug(ctx, member: discord.Member):
+    gif_url = random.choice(homiehug_gifs)
+    title = random.choice(homiehug_titles)
+    description = random.choice(homiehug.discriptions).format(
+        sender=ctx.author.mention, receiver=member.mention)
 
+    embed = discord.Embed(title=title,
+                          description=description,
+                          color=discord.Color.magenta())
+    embed.set_image(url=gif_url)
+    await ctx.send(embed=embed)
+
+# ----------------------
+# 🚫 Error Handling
+# ----------------------
 keep_alive()
 token = os.getenv("TOKEN")
 if token:
