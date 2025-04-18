@@ -140,7 +140,10 @@ async def lovehug(ctx, member: discord.Member):
     embed.set_image(url=gif_url)
     await ctx.send(embed=embed)
 
-
+# ----------------------
+# 💣 Nuke Command
+# ----------------------
+@bot.command()
 @commands.has_permissions(administrator=True)
 async def nuke(ctx):
     channel = ctx.channel
