@@ -123,25 +123,13 @@ kill_titles = [
 kill_description = [
     "{sender} wanna dice {receiver} into the abyss, LET EM BE BURRIED ☠️",
     "{sender} just deleted {receiver} from the existence. 💢",
-    "{sender} did it extra brutal now MUWAHAHAHAAHAHA ! ! !"
+    "{sender} did it extra brutal to {receiver} now MUWAHAHAHAAHAHA ! ! !"
 ]
 
-# ----------------------
-# 🧸 Hug Command
-# ----------------------
-# @bot.command()
-# async def hug(ctx, member: discord.Member):
-#     gif_url = random.shuffle(hug_gifs)
-#     title = random.choice(hug_titles)
-#     description = random.choice(hug_descriptions).format(
-#         sender=ctx.author.mention, receiver=member.mention)
 
-#     embed = discord.Embed(title=title,
-#                           description=description,
-#                           color=discord.Color.blue())
-#     embed.set_image(url=gif_url)
-#     await ctx.send(embed=embed)
-
+# ----------------------
+# 🫂 Hug Command
+# ----------------------
 @bot.command()
 async def hug(ctx, member: discord.Member):
     global last_hug_gif
@@ -205,7 +193,7 @@ async def nuke(ctx):
     # Nuke effect embed
     embed = discord.Embed(
         title="💣 Channel Nuked!",
-        description=f"{ctx.author.mention} just nuked this channel... kind of 😏",
+        description=f"# {ctx.author.mention} JUST BOOOOMMMMMMED!!!! ALL TEXTS HAVE BEEN GONE TO THE ABYSS!! /n ||only those with the moded discord can see the chats :cat_hehe||",
         color=discord.Color.red()
     )
     embed.set_image(url="https://media.giphy.com/media/oe33xf3B50fsc/giphy.gif")  # Optional explosion GIF
