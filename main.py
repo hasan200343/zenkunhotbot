@@ -255,35 +255,37 @@ async def homiehug(ctx, member: discord.Member):
 # ----------------------
 
 # Channel ID for moderation logs
-mod_log_channel_id = 1360343036558835872
+MOD_LOG_CHANNEL_ID = 1360343036558835872  # change if needed
+TIMEOUT_DURATION = 5  # seconds
 
 @bot.event
 async def on_message(message):
-    if message.author.bot:
+    if message.author == bot.user:
         return
 
-    lower_msg = message.content.lower()
+    content_lower = message.content.lower()
+    if any(word in content_lower for word in abusive_words):
+        # Timeout the user (only works for guilds)
+        if message.guild:
+            try:
+                await message.delete()
 
-    if any(word in lower_msg for word in abusive_words):
-        try:
-            # Timeout the user for 5 seconds
-            duration = 5
-            await message.author.timeout(discord.utils.utcnow() + discord.timedelta(seconds=duration), reason="Used abusive language")
-
-            # Warn the user
-            await message.channel.send(f"⚠️ {message.author.mention}, please refrain from using offensive language. You have been timed out for {duration} seconds.")
-
-            # Log the incident
-            log_channel = bot.get_channel(mod_log_channel_id)
-            if log_channel:
-                embed = discord.Embed(
-                    title="🚨 Auto-Moderation Alert",
-                    description=f"**User:** {message.author.mention}\n**Message:** {message.content}\n**Channel:** {message.channel.mention}",
-                    color=discord.Color.red()
+                await message.author.timeout(
+                    duration=TIMEOUT_DURATION,
+                    reason="Abusive language detected."
                 )
-                await log_channel.send(embed=embed)
-        except Exception as e:
-            print(f"Failed to timeout or log: {e}")
+
+                log_channel = bot.get_channel(MOD_LOG_CHANNEL_ID)
+                if log_channel:
+                    await log_channel.send(
+                        f"⚠️ **{message.author}** was timed out for using abusive language.\n"
+                        f"**Message:** `{message.content}`"
+                    )
+                else:
+                    print("Mod log channel not found.")
+
+            except Exception as e:
+                print(f"Error timing out user: {e}")
 
     await bot.process_commands(message)
 
