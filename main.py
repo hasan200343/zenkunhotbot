@@ -19,7 +19,7 @@ async def on_ready():
 # 🚫 Abusive Words List
 # ----------------------
 
-abusive_words = ["fuck", "shit", "mf", "motherfucker", "moron", "bozo", "biggot", "bigot",
+abusive_words = ["fuck", "shit", "motherfucker", "moron", "bozo", "biggot", "bigot",
     "imbecile", "bitch", "bastard", "asshole", "dumbass", "douche", "retard",
     "cunt", "slut", "whore", "prick", "nigga", "nigger", "faggot", "twat", "jackass",
     "dipshit", "dick", "cock", "pussy", "wanker", "tosser", "arsehole", "suck my",
