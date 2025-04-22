@@ -23,7 +23,7 @@ abusive_words = ["fuck", "shit", "mf", "motherfucker", "moron", "bozo", "biggot"
     "imbecile", "bitch", "bastard", "asshole", "dumbass", "douche", "retard",
     "cunt", "slut", "whore", "prick", "nigga", "nigger", "faggot", "twat", "jackass",
     "dipshit", "dick", "cock", "pussy", "wanker", "tosser", "arsehole", "suck my",
-    "suck it"],
+    "suck it"]
 
 # ----------------------
 # 🎴 GIF Lists
