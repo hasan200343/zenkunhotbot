@@ -15,6 +15,15 @@ last_hug_gif = None
 async def on_ready():
     print(f"Logged in as {bot.user}")
 
+# ----------------------
+# 🚫 Abusive Words List
+# ----------------------
+
+abusive_words = ["fuck", "shit", "mf", "motherfucker", "moron", "bozo", "biggot", "bigot",
+    "imbecile", "bitch", "bastard", "asshole", "dumbass", "douche", "retard",
+    "cunt", "slut", "whore", "prick", "nigga", "nigger", "faggot", "twat", "jackass",
+    "dipshit", "dick", "cock", "pussy", "wanker", "tosser", "arsehole", "suck my",
+    "suck it"],
 
 # ----------------------
 # 🎴 GIF Lists
@@ -71,6 +80,15 @@ bonk_gifs = [
     "https://c.tenor.com/VHGbBswo_rQAAAAC/tenor.gif"
 ]
 
+kill_gifs = [
+    "https://c.tenor.com/1Kwjdke1U0UAAAAd/tenor.gif",
+    "https://c.tenor.com/NbBCakbfZnkAAAAC/tenor.gif",
+    "https://media.tenor.com/HqHu-BqxJUEAAAAi/anime-xd.gif",
+    "https://c.tenor.com/G4SGjQE8wCEAAAAC/tenor.gif",
+    "https://c.tenor.com/Ze50E1rW44UAAAAd/tenor.gif",
+    "https://c.tenor.com/GjgIRbO-xOsAAAAC/tenor.gif"
+]
+
 # ----------------------
 # ✨ Titles & Descriptions
 # ----------------------
@@ -120,7 +138,7 @@ kill_titles = [
     "Oh no we got one less homo sapiens from us.....🫂"
 ]
 
-kill_description = [
+kill_descriptions = [
     "{sender} wanna dice {receiver} into the abyss, LET EM BE BURRIED ☠️",
     "{sender} just deleted {receiver} from the existence. 💢",
     "{sender} did it extra brutal to {receiver} now MUWAHAHAHAAHAHA ! ! !"
@@ -193,7 +211,7 @@ async def nuke(ctx):
     # Nuke effect embed
     embed = discord.Embed(
         title="💣 Channel Nuked!",
-        description=f"# {ctx.author.mention} JUST BOOOOMMMMMMED!!!! ALL TEXTS HAVE BEEN GONE TO THE ABYSS!! /n ||only those with the moded discord can see the chats :cat_hehe||",
+        description=f"# {ctx.author.mention} JUST BOOOOMMMMMMED!!!! ALL TEXTS HAVE BEEN GONE TO THE ABYSS!! ||only those with the moded discord can see the chats :cat_hehe||",
         color=discord.Color.red()
     )
     embed.set_image(url="https://media.giphy.com/media/oe33xf3B50fsc/giphy.gif")  # Optional explosion GIF
@@ -231,6 +249,43 @@ async def homiehug(ctx, member: discord.Member):
                           color=discord.Color.dark_grey())
     embed.set_image(url=gif_url)
     await ctx.send(embed=embed)
+
+# ----------------------
+# 💢 Auto Filter and Auto Moderation
+# ----------------------
+
+# Channel ID for moderation logs
+mod_log_channel_id = 1360343036558835872
+
+@bot.event
+async def on_message(message):
+    if message.author.bot:
+        return
+
+    lower_msg = message.content.lower()
+
+    if any(word in lower_msg for word in abusive_words):
+        try:
+            # Timeout the user for 5 seconds
+            duration = 5
+            await message.author.timeout(discord.utils.utcnow() + discord.timedelta(seconds=duration), reason="Used abusive language")
+
+            # Warn the user
+            await message.channel.send(f"⚠️ {message.author.mention}, please refrain from using offensive language. You have been timed out for {duration} seconds.")
+
+            # Log the incident
+            log_channel = bot.get_channel(mod_log_channel_id)
+            if log_channel:
+                embed = discord.Embed(
+                    title="🚨 Auto-Moderation Alert",
+                    description=f"**User:** {message.author.mention}\n**Message:** {message.content}\n**Channel:** {message.channel.mention}",
+                    color=discord.Color.red()
+                )
+                await log_channel.send(embed=embed)
+        except Exception as e:
+            print(f"Failed to timeout or log: {e}")
+
+    await bot.process_commands(message)
 
 # ----------------------
 # 🚫 Error Handling
