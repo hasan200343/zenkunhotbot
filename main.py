@@ -255,7 +255,7 @@ async def homiehug(ctx, member: discord.Member):
 # ----------------------
 
 # Channel ID for moderation logs
-MOD_LOG_CHANNEL_ID = 1360343036558835872  # change if needed
+MOD_LOG_CHANNEL_ID = 1360343036558835872  # not used anymore for logs
 TIMEOUT_DURATION = 5  # seconds
 
 @bot.event
@@ -265,7 +265,6 @@ async def on_message(message):
 
     content_lower = message.content.lower()
     if any(word in content_lower for word in abusive_words):
-        # Timeout the user (only works for guilds)
         if message.guild:
             try:
                 await message.delete()
@@ -275,19 +274,17 @@ async def on_message(message):
                     reason="Abusive language detected."
                 )
 
-                log_channel = await bot.fetch_channel(MOD_LOG_CHANNEL_ID)
-                if log_channel:
-                    await log_channel.send(
-                        f"⚠️ **{message.author}** was timed out for using abusive language.\n"
-                        f"**Message:** `{message.content}`"
-                    )
-                else:
-                    print("Mod log channel not found.")
+                # Send dramatic message in the same channel
+                await message.channel.send(
+                    "🚨 OH MY! This person just used abusive language...\n"
+                    "TIME TO THROW THEM OUT OF THE BALCONY!!! 🪟🪂"
+                )
 
             except Exception as e:
                 print(f"Error timing out user: {e}")
 
     await bot.process_commands(message)
+
 
 # ----------------------
 # 🚫 Error Handling
