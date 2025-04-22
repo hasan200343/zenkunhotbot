@@ -275,7 +275,7 @@ async def on_message(message):
                     reason="Abusive language detected."
                 )
 
-                log_channel = bot.get_channel(MOD_LOG_CHANNEL_ID)
+                log_channel = await bot.fetch_channel(MOD_LOG_CHANNEL_ID)
                 if log_channel:
                     await log_channel.send(
                         f"⚠️ **{message.author}** was timed out for using abusive language.\n"
