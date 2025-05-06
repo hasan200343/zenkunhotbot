@@ -8,9 +8,14 @@ import os
 import asyncio
 import json
 
+class MyBot(commands.Bot):
+    async def setup_hook(self):
+        self.loop.create_task(birthday_check(self))  # Pass the bot instance to the task
+
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix="!", intents=intents)
+intents.members = True
+bot = MyBot(command_prefix="!", intents=intents)
 last_hug_gif = None
 
 
@@ -324,24 +329,29 @@ def save_birthdays(birthdays):
         json.dump(birthdays, f)
 
 # Scheduled birthday check
-async def birthday_check():
+async def birthday_check(bot):
     await bot.wait_until_ready()
-    while not bot.is_closed():
-        today = datetime.datetime.now().strftime("%m-%d")
-        birthdays = load_birthdays()
+    channel_id = 123456789012345678  # Replace with your channel ID
 
-        for user_id, birthday in birthdays.items():
-            if birthday == today:
+    while not bot.is_closed():
+        today = datetime.datetime.now().strftime('%m-%d')
+        with open('birthdays.json', 'r') as f:
+            birthdays = json.load(f)
+
+        channel = bot.get_channel(channel_id)
+        if not channel:
+            print("Channel not found. Check the ID.")
+            return
+
+        for user_id, bday in birthdays.items():
+            if bday == today:
                 user = await bot.fetch_user(int(user_id))
                 if user:
-                    try:
-                        await user.send(f"🎉 Happy Birthday, {user.name}! Have an amazing day! 🎂🥳")
-                        print(f"Sent birthday message to {user.name}")
-                    except Exception as e:
-                        print(f"Failed to send birthday message to {user.name}: {e}")
+                    await channel.send(f"🎉 @everyone Please wish a very happy birthday to {user.mention}! 🎂")
+                    print(f"Sent birthday message for {user.name} in {channel.name}")
 
-        #await asyncio.sleep(86400)  # Check once per day
-        await asyncio.sleep(10)
+        await asyncio.sleep(10)  # Wait one day before next check
+
 
 bot.loop.create_task(birthday_check())
 
