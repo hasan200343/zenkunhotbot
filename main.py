@@ -23,7 +23,7 @@ abusive_words = ["fuck", "shit", "motherfucker", "moron", "bozo", "biggot", "big
     "imbecile", "bitch", "bastard", "asshole", "dumbass", "douche", "retard",
     "cunt", "slut", "whore", "prick", "nigga", "nigger", "faggot", "twat", "jackass",
     "dipshit", "dick", "cock", "pussy", "wanker", "tosser", "arsehole", "suck my",
-    "suck it", "niga"]
+    "suck it", "niga", "cum", "retard", "niggi", "pussy"]
 
 # ----------------------
 # 🎴 GIF Lists
@@ -284,6 +284,25 @@ async def on_message(message):
                 print(f"Error timing out user: {e}")
 
     await bot.process_commands(message)
+
+# ----------------------
+# 🔪 Kill Command
+# ----------------------
+
+@bot.command(name="sus")
+async def sus(ctx):
+    if not ctx.message.mentions:
+        await ctx.send("Please mention at least one person to check their susness 👀")
+        return
+
+    responses = []
+    for member in ctx.message.mentions:
+        sus_percentage = random.randint(0, 100)
+        emoji = "😇" if sus_percentage < 25 else "🤨" if sus_percentage < 75 else "🚨"
+        responses.append(f"{emoji} {member.mention} is {sus_percentage}% sus!")
+
+    await ctx.send("\n".join(responses))
+
 
 
 # ----------------------
