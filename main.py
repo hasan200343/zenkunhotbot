@@ -1,21 +1,15 @@
-from asyncio import tasks
-import datetime
 from keep_alive import keep_alive
 import discord
 from discord.ext import commands
 import random
 import os
 import asyncio
-import json
 
-class MyBot(commands.Bot):
-    async def setup_hook(self):
-        self.loop.create_task(birthday_check(self))  # Pass the bot instance to the task
 
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
-bot = MyBot(command_prefix="!", intents=intents)
+bot = commands.bot(command_prefix="!", intents=intents)
 last_hug_gif = None
 
 
@@ -310,51 +304,6 @@ async def sus(ctx):
         responses.append(f"{emoji} {member.mention} is {sus_percentage}% sus!")
 
     await ctx.send("\n".join(responses))
-
-
-# ----------------------
-# 🎉 Birthday Handling
-# ----------------------
-
-# Load birthdays from JSON
-def load_birthdays():
-    if not os.path.exists("birthdays.json"):
-        return {}
-    with open("birthdays.json", "r") as f:
-        return json.load(f)
-
-# Save birthdays to JSON
-def save_birthdays(birthdays):
-    with open("birthdays.json", "w") as f:
-        json.dump(birthdays, f)
-
-# Scheduled birthday check
-async def birthday_check(bot):
-    await bot.wait_until_ready()
-    channel_id = 123456789012345678  # Replace with your channel ID
-
-    while not bot.is_closed():
-        today = datetime.datetime.now().strftime('%m-%d')
-        with open('birthdays.json', 'r') as f:
-            birthdays = json.load(f)
-
-        channel = bot.get_channel(channel_id)
-        if not channel:
-            print("Channel not found. Check the ID.")
-            return
-
-        for user_id, bday in birthdays.items():
-            if bday == today:
-                user = await bot.fetch_user(int(user_id))
-                if user:
-                    await channel.send(f"🎉 @everyone Please wish a very happy birthday to {user.mention}! 🎂")
-                    print(f"Sent birthday message for {user.name} in {channel.name}")
-
-        await asyncio.sleep(10)  # Wait one day before next check
-
-
-bot.loop.create_task(birthday_check())
-
 
 
 # ----------------------
