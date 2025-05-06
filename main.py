@@ -5,11 +5,9 @@ import random
 import os
 import asyncio
 
-
 intents = discord.Intents.default()
 intents.message_content = True
-intents.members = True
-bot = commands.bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents)
 last_hug_gif = None
 
 
@@ -288,7 +286,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
 # ----------------------
-# SUS Command
+# 🔪 SUS Command
 # ----------------------
 
 @bot.command(name="sus")
@@ -304,6 +302,7 @@ async def sus(ctx):
         responses.append(f"{emoji} {member.mention} is {sus_percentage}% sus!")
 
     await ctx.send("\n".join(responses))
+
 
 
 # ----------------------
