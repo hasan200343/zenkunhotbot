@@ -1,9 +1,12 @@
+from asyncio import tasks
+import datetime
 from keep_alive import keep_alive
 import discord
 from discord.ext import commands
 import random
 import os
 import asyncio
+import json
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -286,7 +289,7 @@ async def on_message(message):
     await bot.process_commands(message)
 
 # ----------------------
-# 🔪 Kill Command
+# SUS Command
 # ----------------------
 
 @bot.command(name="sus")
@@ -302,6 +305,45 @@ async def sus(ctx):
         responses.append(f"{emoji} {member.mention} is {sus_percentage}% sus!")
 
     await ctx.send("\n".join(responses))
+
+
+# ----------------------
+# 🎉 Birthday Handling
+# ----------------------
+
+# Load birthdays from JSON
+def load_birthdays():
+    if not os.path.exists("birthdays.json"):
+        return {}
+    with open("birthdays.json", "r") as f:
+        return json.load(f)
+
+# Save birthdays to JSON
+def save_birthdays(birthdays):
+    with open("birthdays.json", "w") as f:
+        json.dump(birthdays, f)
+
+# Scheduled birthday check
+async def birthday_check():
+    await bot.wait_until_ready()
+    while not bot.is_closed():
+        today = datetime.datetime.now().strftime("%m-%d")
+        birthdays = load_birthdays()
+
+        for user_id, birthday in birthdays.items():
+            if birthday == today:
+                user = await bot.fetch_user(int(user_id))
+                if user:
+                    try:
+                        await user.send(f"🎉 Happy Birthday, {user.name}! Have an amazing day! 🎂🥳")
+                        print(f"Sent birthday message to {user.name}")
+                    except Exception as e:
+                        print(f"Failed to send birthday message to {user.name}: {e}")
+
+        #await asyncio.sleep(86400)  # Check once per day
+        await asyncio.sleep(10)
+
+bot.loop.create_task(birthday_check())
 
 
 
